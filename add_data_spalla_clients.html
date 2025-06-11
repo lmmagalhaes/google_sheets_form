@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Formulário de Clientes Spalla</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f7f7f7;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      .container {
+        background-color: #fff;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 600px;
+      }
+      h2 {
+        text-align: center;
+        color: #333;
+        margin-bottom: 20px;
+      }
+      label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+      }
+      input[type="text"],
+      input[type="number"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+      }
+      button {
+        width: 100%;
+        padding: 12px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+      .message {
+        text-align: center;
+        margin-top: 15px;
+        font-size: 16px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Cadastro de Dados - Clientes Spalla</h2>
+      <form id="formulario">
+        <label>Cliente:</label>
+        <input type="text" name="Cliente" required />
+
+        <label>Mês:</label>
+        <input type="text" name="Mes" required />
+
+        <label>Transcoding:</label>
+        <input type="text" name="transcoding" required />
+
+        <label>CDN:</label>
+        <input type="text" name="cdn" required />
+
+        <label>Storage:</label>
+        <input type="text" name="storage" required />
+
+        <label>Legenda:</label>
+        <input type="text" name="legenda" required />
+
+        <label>Spalla Studio:</label>
+        <input type="text" name="spalla_studio" required />
+
+        <label>Chat:</label>
+        <input type="text" name="Chat" required />
+
+        <label>GB / Min:</label>
+        <input type="text" name="gb_por_min" required />
+
+        <button type="submit">Enviar</button>
+      </form>
+      <div class="message" id="mensagem"></div>
+    </div>
+
+    <script>
+      const scriptURL =
+        "        https://script.google.com/macros/s/AKfycbznCYChNSNSv6EuF4Eek1hx9gS5WrARvxSCnt2Nj_4MVmOqWNhHC-ZxaaiWOC5eux8z/exec";
+
+      document
+        .querySelector("#meuFormulario")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
+
+          const formData = {
+            Cliente: document.querySelector("[name='Cliente']").value,
+            Mes: document.querySelector("[name='Mes']").value,
+            transcoding: document.querySelector("[name='transcoding']").value,
+            cdn: document.querySelector("[name='cdn']").value,
+            storage: document.querySelector("[name='storage']").value,
+            legenda: document.querySelector("[name='legenda']").value,
+            spalla_studio: document.querySelector("[name='spalla_studio']")
+              .value,
+            Chat: document.querySelector("[name='Chat']").value,
+            gb_por_min: document.querySelector("[name='gb_por_min']").value,
+          };
+
+          try {
+            const response = await fetch(scriptURL, {
+              method: "POST",
+              body: JSON.stringify(formData),
+              headers: {
+                "Content-Type": "application/json",
+              },
+            });
+
+            const text = await response.text();
+            alert("Resposta do servidor: " + text);
+          } catch (error) {
+            alert("Erro ao enviar: " + error.message);
+          }
+        });
+    </script>
+  </body>
+</html>
