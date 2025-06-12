@@ -1,11 +1,14 @@
-const express = require("express");
-const serverless = require("serverless-http");
+// api/submit.js
 const axios = require("axios");
 
-const app = express();
-app.use(express.json());
+/**
+ * Vercel Edge Function padrão
+ */
+module.exports = async (req, res) => {
+  if (req.method !== "POST") {
+    return res.status(405).json({ message: "Método não permitido" });
+  }
 
-app.post("/", async (req, res) => {
   const data = req.body;
 
   try {
@@ -19,7 +22,4 @@ app.post("/", async (req, res) => {
   } catch (error) {
     return res.status(500).json({ message: "Erro ao enviar dados", error: error.message });
   }
-});
-
-module.exports = app;
-module.exports.handler = serverless(app); // 🟢 Ponto chave para rodar na Vercel
+};
