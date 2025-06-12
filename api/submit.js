@@ -5,7 +5,7 @@ const axios = require("axios");
 const app = express();
 app.use(express.json());
 
-app.post("/api/submit", async (req, res) => {
+app.post("/", async (req, res) => {
   const data = req.body;
 
   try {
