@@ -2,10 +2,5 @@
   "cleanUrls": true,
   "rewrites": [
     { "source": "/", "destination": "/index.html" }
-  ],
-  "functions": {
-    "api/server.js": {
-      "runtime": "nodejs18.x"
-    }
-  }
+  ]
 }
