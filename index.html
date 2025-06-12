@@ -99,8 +99,7 @@
     </div>
 
     <script>
-      const scriptURL =
-        "https://script.google.com/macros/s/AKfycbymCea5jzKvTMSgVU3a5jaOiKqWEsAS9FtTk3gVqe3oyp55r1dqlluVhrxxI4RPtz-6/exec";
+      const postURL = "https://google-sheets-form-nine.vercel.app/api/submit.js";
 
       document
         .querySelector("#formulario")
@@ -121,7 +120,7 @@
           };
 
           try {
-            const response = await fetch(scriptURL, {
+            const response = await fetch(postURL, {
               method: "POST",
               body: JSON.stringify(formData),
               headers: {
