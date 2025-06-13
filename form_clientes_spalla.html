@@ -135,5 +135,31 @@
           }
         });
     </script>
+    <script>
+      const mesInput = document.getElementById("mes");
+
+      mesInput.addEventListener("input", (e) => {
+        let value = e.target.value.replace(/\D/g, ""); // remove tudo que não for número
+
+        if (value.length >= 3) {
+          value = value.slice(0, 2) + "/" + value.slice(2, 6);
+        }
+
+        e.target.value = value.slice(0, 7); // força o tamanho máximo MM/AAAA
+      });
+
+      // Validação final antes de enviar
+      document
+        .getElementById("formulario")
+        .addEventListener("submit", function (e) {
+          const mes = mesInput.value;
+          const regex = /^(0[1-9]|1[0-2])\/\d{4}$/;
+
+          if (!regex.test(mes)) {
+            e.preventDefault();
+            alert("Insira o mês no formato MM/AAAA válido.");
+          }
+        });
+    </script>
   </body>
 </html>
