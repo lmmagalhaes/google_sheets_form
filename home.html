@@ -1,12 +1,72 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interno</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Central de Formulários</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #4facfe, #00f2fe);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      background: #fff;
+      padding: 40px 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      text-align: center;
+      width: 90%;
+      max-width: 500px;
+    }
+
+    h1 {
+      color: #333;
+      margin-bottom: 30px;
+      font-size: 28px;
+    }
+
+    .button-grid {
+      display: grid;
+      gap: 15px;
+    }
+
+    .button-grid a {
+      display: block;
+      background-color: #007bff;
+      color: white;
+      text-decoration: none;
+      padding: 14px;
+      border-radius: 10px;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+
+    .button-grid a:hover {
+      background-color: #0056b3;
+    }
+  </style>
 </head>
 <body>
-    <h1>Exemplo de Página</h1>
-    <button><a href="/form_clientes_spalla.html">Formulário consumo</a></button>
+  <div class="container">
+    <h1>Central de Formulários</h1>
+    <div class="button-grid">
+      <a href="/form_clientes_spalla.html">📊 Formulário de Consumo - Clientes Spalla</a>
+      <!-- <a href="/form_marketing.html">📣 Formulário de Ações de Marketing</a>
+      <a href="/form_financeiro.html">💰 Formulário Financeiro</a>
+      <a href="/form_estoque.html">📦 Formulário de Estoque</a>
+      <a href="/form_rh.html">👥 Formulário de RH</a> -->
+    </div>
+  </div>
 </body>
 </html>
